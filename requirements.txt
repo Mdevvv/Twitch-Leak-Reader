@@ -1,4 +1,4 @@
-Python 3 (I'm codding in Python 3.9)
+Python 3 (I'm coding in Python 3.9)
 
 numpy==1.21.3
 pandas==1.3.4
