@@ -1,6 +1,6 @@
 # Twitch-Leak-Reader
 
-First download the twitch-leaks-part-one\twitch-payouts.
+First download the twitch-leaks-part-one\twitch-payouts
 
 Then execute the setup.exe and follow instruction until a pop-up appears and said "Finish"
 
