@@ -102,6 +102,9 @@ foreach($i in $Years) {
 
     $FileCount = $FileCount + 1
 
+    $Perc = ($FileCount/26)*100
+    Write-Progress -Activity "recovery of nessecary files" -PercentComplete $Perc
+
   }
 
 }
@@ -119,5 +122,6 @@ if(Test-Path -Path $current) {
 } else {
   [System.Windows.Forms.MessageBox]::Show("$current doesn't exist", "setup.exe")
 }
-
+$Perc = ($FileCount/26)*100
+Write-Progress -Activity "Finish" -PercentComplete $Perc
 [System.Windows.Forms.MessageBox]::Show("Finish","setup.exe")
