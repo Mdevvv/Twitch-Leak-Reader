@@ -9,5 +9,5 @@ Now you can double click on the Twich Leak Reader.py (checked before requirement
 
 
 
-Tutotriel French on Youtube :
+<b><i>Tutotriel French on Youtube :</i></b>
 [![tuto fr youtube](http://i3.ytimg.com/vi/YfmEKqPwHIk/maxresdefault.jpg)](https://youtu.be/YfmEKqPwHIk "Tuto utiliser le logiciel Twitch Leaked Reader")
