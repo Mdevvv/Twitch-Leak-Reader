@@ -120,18 +120,33 @@ class ReaderTotal:
         self._id = id
         self._allFiles = 27
 
-        print("\n Please wait:")
-        for i in range(self._allFiles):
-            data = read_csv("decompressed_files/revenues" + str(i) + ".csv") # recupere le read_csv
-            data = data.drop([ 'payout_entity_id', 'report_date'], axis=1) # enleve des colones inutile
-            data = data.set_index('user_id') # transforme les indexs par les user_id 
+        #vérifie s'il n'a pas déjà été chercher
+        data = read_csv("already_done.csv")
+        data = data.set_index('user_id')
+        if self._id in data.index : # vérifié si le user id exist dans ce csv
+            print("find with already_done.csv file")
+            self._sum = data.loc[self._id].sum()
+        
+        else :
+            print("\n Please wait:")
+            for i in range(self._allFiles):
+                data = read_csv("decompressed_files/revenues" + str(i) + ".csv") # recupere le read_csv
+                data = data.drop([ 'payout_entity_id', 'report_date'], axis=1) # enleve des colones inutile
+                data = data.set_index('user_id') # transforme les indexs par les user_id 
 
-            if self._id in data.index : # vérifié si le user id exist dans ce csv
-                self._sum += round(data.loc[self._id].sum(),2) # faire une somme et arrondir a 10^(-2) près
+                if self._id in data.index : # vérifié si le user id exist dans ce csv
+                    self._sum += round(data.loc[self._id].sum(),2) # faire une somme et arrondir a 10^(-2) près
 
-            self._loading = round(i/self._allFiles*100)
-            print("",str(self._loading),"%")
+                self._loading = round(i/self._allFiles*100)
+                print("",str(self._loading),"%")
 
+            with open('already_done.csv', 'a', newline='') as f_object:  
+                # Pass the CSV  file object to the writer() function
+                writer_object = writer(f_object)
+                # Result - a writer object
+                # Pass the data in the list as an argument into the writerow() function
+                writer_object.writerow([self._id, round(self._sum,2)])
+                # Close the file object
     def get(self):
         return round(self._sum,2)
     
