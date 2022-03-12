@@ -207,9 +207,9 @@ class ApiTwitch:
 
         anser = json.loads(r.text) #transformation du json en dico
 
-        if ("_total" in anser):
-            if anser["_total"] != 0:
-                self._id = int(anser['users'][0]['_id']) #recupération de l'id
+        if ("data" in anser):
+            if anser["data"] != 0:
+                self._id = int(anser["data"][0]['id']) #recupération de l'id
 
         else :
             self._id = None
